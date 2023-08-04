@@ -6,50 +6,54 @@ import { FormControl,FormGroup,NgForm } from '@angular/forms';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent  implements OnInit{
-  users:User[] = [];
+export class UserListComponent  {
 
-   userForm = new FormGroup(
-    {
-    name : new FormControl(""),
-    email : new FormControl("")
-   }
-   )
+}
 
-    constructor(private http:HttpClient) {
+// export class UserListComponent  implements OnInit{
+//   users:User[] = [];
 
-    }
+//    userForm = new FormGroup(
+//     {
+//     name : new FormControl(""),
+//     email : new FormControl("")
+//    }
+//    )
 
-    ngOnInit() {
-       this.getUsers().subscribe((response) =>{
-       console.log('response:',response)
-       this.users = response
-       })
-    }
+//     constructor(private http:HttpClient) {
 
-    getUsers(){
-     return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
+//     }
 
-    }
+//     ngOnInit() {
+//        this.getUsers().subscribe((response) =>{
+//        console.log('response:',response)
+//        this.users = response
+//        })
+//     }
 
-    onSubmit(){
-     this.addUser().subscribe((response)=> {
-this.users.push(response)
-     })
-    }
+//     getUsers(){
+//      return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
+
+//     }
+
+//     onSubmit(){
+//      this.addUser().subscribe((response)=> {
+// this.users.push(response)
+//      })
+//     }
    
-    addUser(){
-     return this.http.post<User>('https://jsonplaceholder.typicode.com/users',{
-        name : this.userForm.controls.name.value,
-        email : this.userForm.controls.email.value,
-      });
+//     addUser(){
+//      return this.http.post<User>('https://jsonplaceholder.typicode.com/users',{
+//         name : this.userForm.controls.name.value,
+//         email : this.userForm.controls.email.value,
+//       });
 
       
-    }
-}
+//     }
+// }
 
-class User {
-  name!:string;
-  email!:string
-}
+// class User {
+//   name!:string;
+//   email!:string
+// }
 

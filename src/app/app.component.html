@@ -1,2 +1,9 @@
 <h1>HEllo Welcom</h1>
-<app-user-list></app-user-list>
+<!-- <app-user-list></app-user-list> -->
+<ul>
+    <li><a [routerLink]="['']">Home</a></li>
+    <li><a [routerLink]="['about']">about</a></li>
+    <li><a [routerLink]="['contact-us']">constactus</a></li>
+
+</ul>
+<router-outlet></router-outlet>
