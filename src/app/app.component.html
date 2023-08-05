@@ -1,9 +1,29 @@
-<h1>HEllo Welcom</h1>
 <!-- <app-user-list></app-user-list> -->
-<ul>
-    <li><a [routerLink]="['']">Home</a></li>
-    <li><a [routerLink]="['about']">about</a></li>
-    <li><a [routerLink]="['contact-us']">constactus</a></li>
 
-</ul>
+<nav class="navbar navbar-expand-lg text-bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-2">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="#" [routerLink]="['/']">home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['about']">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['contact-us']">contact-us</a>
+          </li>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" routerLink="/post/1">Action</a></li>
+            <li><a class="dropdown-item" href="#" routerLink="/post/2">Another action</a></li>
+            <li><a class="dropdown-item" href="#" routerLink="/post/3">Something else here</a></li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
 <router-outlet></router-outlet>
