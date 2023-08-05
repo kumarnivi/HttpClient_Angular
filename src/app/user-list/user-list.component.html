@@ -1,16 +1,29 @@
-<!-- <div class="container">
-    <form  class="form" [formGroup]="userForm" method="onSubmit()">
-        <label for="">
-            name <input type="text" name="" id="" class="form-control" formControlName="name">
-        </label>
-<label for="">
-    email <input class="form-control" type="text" name="" id="" formControlName="email">
-</label>
-<button type="submit" class="btn btn-primary mt-2" (click)="onSubmit()" > submit</button>
-    </form>
+<div class="pt-5">
+    <div class="container text-bg-light bg-body-tertiary rounded  ">
+        <h3>ADD USER</h3>
+        <div class="row ">
+            <div class="col-md-6">
+                <form  class="form " [formGroup]="userForm" method="onSubmit()">
+                    <label for="" >
+                        name 
+                    </label>
+                    <input type="text" name="" id="" class="form-control" formControlName="name">
+            <label for="">
+                email 
+            </label>
+                <input class="form-control" type="text" name="" id="" formControlName="email"> <br>
+            
+            <button type="submit" class="btn btn-primary mt-2" (click)="onSubmit()" > submit</button>
+                </form>
+
+            </div>
+        </div>
+    
+    
+     
 </div>
- 
+
  <h1>User List</h1>
 <ul>
     <li *ngFor="let user of users"> {{user.name}} | {{user.email}} </li>
-</ul> -->
+</ul>

@@ -17,6 +17,8 @@ const appRoutes:Routes =[
   {path:'about', component:AboutComponent},
   {path:'contact-us', component:ContactUsComponent},
   {path:'post/:id', component:PostComponent},
+ 
+  
 
   
 ]
