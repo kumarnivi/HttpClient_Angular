@@ -1,14 +1,42 @@
+
+
+<div class="container ">
+    <h3 class="pt-5">User List</h3>
+    <table class="table shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <thead>
+            <tr>
+                <th scope="row" style="background-color: black; color: white;"> S.NO</th>
+                <th scope="row" style="background-color: black; color: white;">Name</th>
+                <th scope="row" style="background-color: black; color: white;">User Name</th>
+                <th scope="row" style="background-color: black; color: white;">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i = index">
+                <th scope="row" class="bg-primary-subtle"> {{user.id}} </th>
+                <td  class="  bg-secondary text-white"> {{user.name}} </td>
+                <td class=" bg-secondary text-white"> {{user.username}} </td>
+                <td class=" bg-secondary text-white"> {{user.email}} </td>
+            </tr>
+           
+        </tbody>
+    </table>
+</div>
+
 <div class="pt-5">
     <div class="container text-bg-light bg-body-tertiary rounded  ">
         <h3>ADD USER</h3>
-        <div class="row ">
+        <div class=" row ">
             <div class="col-md-6">
                 <form  class="form " [formGroup]="userForm" method="onSubmit()">
-                    <label for="" >
+                    <label for="" class="form-label white-text" >
                         name 
                     </label>
                     <input type="text" name="" id="" class="form-control" formControlName="name">
-            <label for="">
+                    <label for="username" class="form-label white-text">User Name</label>
+                    <input type="text" class="form-control white-input" id="username" placeholder="Enter your User Name" name="username" formControlName="username">
+              
+            <label for="" class="form-label white-text">
                 email 
             </label>
                 <input class="form-control" type="text" name="" id="" formControlName="email"> <br>
@@ -22,8 +50,3 @@
     
      
 </div>
-
- <h1>User List</h1>
-<ul>
-    <li *ngFor="let user of users"> {{user.name}} | {{user.email}} </li>
-</ul>
