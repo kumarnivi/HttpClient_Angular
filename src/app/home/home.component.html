@@ -1,55 +1,122 @@
 
-<div class="container">
-    <div class="row" >
-    </div>
-</div>
- <div class="p-5">
-    <div class="container shadow p-3 mb-5 bg-body-tertiary rounded justify-content-center  ">
-        <form class="row g-3">
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" class="form-control" id="inputEmail4">
-            </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword4">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="col-12">
-              <label for="inputAddress2" class="form-label">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="col-md-6">
-              <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="col-md-4">
-              <label for="inputState" class="form-label">State</label>
-              <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <label for="inputZip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Check me out
-                </label>
-              </div>
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
-          </form> 
-    </div>
- </div>
-
-
+<div class="container mt-5 pt-5 "  >
+    <h3>Template Driven Form</h3>
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="form col-12 card p-5">
+      <div class="">
+        <p>
+          <label for="firstname " >First Name</label> <br>
+          <input type="text" class="form-control" #firstName="ngModel" name="firstname" id="firstname" [(ngModel)]="contact.firstName" required minlength="10">
+          <br>
+          <span *ngIf="!firstName.valid && (firstName.touched || firstName.dirty)">
+            <span class="text-danger" *ngIf="firstName.errors?.['minlength']">Minimum length is 10 characters</span>
+            <span class="text-danger" *ngIf="firstName.errors?.['required']">First Name is required</span>
+          </span>
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="lastname">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          id="lastname"
+          [(ngModel)]="contact.lastName"
+          maxlength="15"
+          pattern="^[a-zA-Z]+$"
+          required
+          #lastName="ngModel" >
+        
+        <span *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+          <span class="text-danger" *ngIf="lastName.errors?.['maxlength']">
+            Maximum length is 15 characters
+          </span>
+          <span class="text-danger" *ngIf="lastName.errors?.['pattern']">
+            Only characters are allowed
+          </span>
+          <span   class="text-danger" *ngIf="lastName.errors?.['required']">Last Name is required</span>
+        </span>
+      </div>
+      
+      
+      <div class="mb-3">
+        <p>
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" [(ngModel)]="contact.email" #email="ngModel" required>
+          <span *ngIf="email.invalid && (email.touched || email.dirty)">
+            <span  class="text-danger" *ngIf="email.errors?.['required']">Email is required</span>
+          </span>
+        </p>
+      </div>
+    
+      <div class="mb-3">
+        <p>
+          <label for="gender">Gender</label> <br>
+          <input type="radio"  #gender="ngModel" value="male" name="gender" id="genderMale" [(ngModel)]="contact.gender" required>Male <br>
+          <input type="radio" #gender="ngModel" value="female" name="gender" id="genderFemale" [(ngModel)]="contact.gender" required>Female
+          <span class="text-danger" *ngIf="gender.invalid && (gender.touched || gender.dirty)">
+            <span class="text-danger" *ngIf="gender.errors?.['required']">Gender is required</span>
+          </span>
+        </p>
+      </div>
+      
+      <div class="mb-3">
+        <p>
+          <label for="isMarried" class="checkbox">Married</label> <br>
+          <input  type="checkbox" #isMarried="ngModel" name="isMarried" id="isMarried" [(ngModel)]="contact.isMarried" required>
+          <span class="text-danger" *ngIf="isMarried.invalid && (isMarried.touched || isMarried.dirty)"> <br>
+            <span class="text-danger" *ngIf="isMarried.errors?.['required']">Is Married is required</span>
+          </span>
+        </p>
+      </div>
+    
+      <div class="mb-3">
+        <p>
+          <label for="country">Country</label> <br>
+          <select #country="ngModel" name="country" id="country" [(ngModel)]="contact.country" required>
+            <option value="" selected="">Select</option>
+            <option value="{{ country.id }}" *ngFor="let country of countryList">{{ country.name }}</option>
+          </select>
+          <span class="text-danger" *ngIf="country.invalid && (country.touched || country.dirty)"> <br>
+            <span class="text-danger" *ngIf="country.errors?.['required']">Country is required</span>
+          </span>
+        </p>
+      </div>
+     
+      <div class="mb-3">
+        <div ngModelGroup="address">
+          <p>
+            <label for="city">City</label>
+            <input #city="ngModel" class="form-control" type="text" name="city" id="city" [(ngModel)]="contact.address.city" required>
+            <span *ngIf="city.invalid && (city.touched || city.dirty)">
+              <span class="text-danger" *ngIf="city.errors?.['required']">City is required</span>
+            </span>
+          </p>
+          <div class="mb-3">
+            <p>
+              <label for="street">Street</label>
+              <input #street="ngModel" class="form-control" type="text" name="street" id="street" [(ngModel)]="contact.address.street" required>
+              <span *ngIf="street.invalid && (street.touched || street.dirty)">
+                <span class="text-danger" *ngIf="street.errors?.['required']">Street is required</span>
+              </span>
+            </p>
+          </div>
+         
+          <div class="mb-3">
+            <p>
+              <label for="pincode">Pin Code</label>
+              <input type="text" class="form-control" #pincode="ngModel" name="pincode" id="pincode" [(ngModel)]="contact.address.pincode" required>
+              <span *ngIf="pincode.invalid && (pincode.touched || pincode.dirty)">
+                <span class="text-danger" *ngIf="pincode.errors?.['required']">Pin Code is required</span>
+              </span>
+            </p>
+          </div>
+        
+        </div>
+      </div>
+     
+      <p>
+        <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+      </p>
+    </form>
+  </div>
+  

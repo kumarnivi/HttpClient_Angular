@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RouterModule,Routes } from '@angular/router';
 import { PostComponent } from './post/post.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes:Routes =[ 
   {path:'', component:HomeComponent},
@@ -36,6 +37,7 @@ const appRoutes:Routes =[
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
 
   ],

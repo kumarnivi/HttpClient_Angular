@@ -1,6 +1,6 @@
 
 
-<div class="container ">
+<div class="container pt-3 ">
     <h3 class="pt-5">User List</h3>
     <table class="table shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <thead>
@@ -32,14 +32,14 @@
                     <label for="" class="form-label white-text" >
                         name 
                     </label>
-                    <input type="text" name="" id="" class="form-control" formControlName="name">
+                    <input type="text" name="" id="" class="form-control" formControlName="name" placeholder="Enter Your Name">
                     <label for="username" class="form-label white-text">User Name</label>
                     <input type="text" class="form-control white-input" id="username" placeholder="Enter your User Name" name="username" formControlName="username">
               
             <label for="" class="form-label white-text">
                 email 
             </label>
-                <input class="form-control" type="text" name="" id="" formControlName="email"> <br>
+                <input class="form-control" type="text" name="" id="" formControlName="email" placeholder="Enter Your Email"> <br>
             
             <button type="submit" class="btn btn-primary mt-2" (click)="onSubmit()" > submit</button>
                 </form>
